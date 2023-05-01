@@ -2,13 +2,16 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import Link from 'next/link';
 import axios from 'axios';
+import Navigation from '@/pages/components/navigation';
 
 
 
 export default function doctor({data}) {
 
   return (
-    <div>
+    <div class="p-4 sm:ml-64">
+      <Navigation/>
+
         <h1>Name: {data.name}</h1>
         <h6>Fees: {data.fees}</h6>
         <Link href={`Appointment/${data.id}`} >Take Appointment</Link>

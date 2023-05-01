@@ -2,19 +2,20 @@ import Head from 'next/head'
 import Link from 'next/link'
 import React from 'react'
 import MyHead from './head'
+import Sessioncheck from './sessioncheck'
+import Navigation from './navigation'
 
 export default function MyLayout({children}) {
+  
   return (
     <div>
         
 
-        <MyHead/>
-        <nav>
-            <Link href="/about"> About Us</Link>
-            <Link href="/"> Home</Link>
-            <Link href="/Patient/logout">LogOut</Link>
-          
-        </nav>
+        <Sessioncheck/>    
+          <MyHead/>
+          <Navigation/>
+       
+       
 
         <main>{children}</main>
 

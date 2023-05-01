@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function profile() {
+export default function Profilepicup() {
   return (
     <div>
-      <h1>Profile</h1>
+      
     </div>
   )
 }

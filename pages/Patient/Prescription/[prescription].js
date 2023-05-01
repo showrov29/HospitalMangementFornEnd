@@ -2,11 +2,29 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
+import Navigation from '../../components/navigation'
+import { useRouter } from 'next/router';
 
 export default function prescription({data}) {
+  const router=useRouter()
+
+  const ok={
+    details:(item)=>{
+      
+      router.push({
+        pathname: 'presdetails',
+        query: { id: item }
+      });
+      
+    }
+  }
+
 
   return (
-    <div>
+    <div class="p-4 sm:ml-64">
+
+<Navigation/>
+
       
           <table>
             <thead>
@@ -22,7 +40,7 @@ export default function prescription({data}) {
                   <tr>
                     <td>{item.patientName}</td>
                     <td>{item.patientAge}</td>
-                    
+                    <td><button onClick={()=>{ok.details(item.id)}} >Details</button></td>
                   </tr>
                 );
               })}
@@ -35,10 +53,12 @@ export default function prescription({data}) {
 
 
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+  
+ const {prescription}=context.query;
  
   try {
-  const response = await axios.get('http://localhost:3000/prescription/myprescription');
+  const response = await axios.get(`http://localhost:3000/prescription/myprescription/${prescription}`);
   const data = await response.data;
   console.log(data);
 

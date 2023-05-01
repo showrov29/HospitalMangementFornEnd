@@ -1,10 +1,13 @@
 import React from 'react'
 import axios from 'axios';
+import Navigation from '../components/navigation'
 
 export default function bloodbank({data}) {
 
   return (
-    <div>
+    <div class="p-4 sm:ml-64">
+      <Navigation/>
+
 <h1>All available Blood:</h1>
 <p>{data.status}</p>
 <table>

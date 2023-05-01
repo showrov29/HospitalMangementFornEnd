@@ -2,15 +2,44 @@ import React from 'react'
 import axios from 'axios';
 import { useEffect,useState } from 'react';
 import { useRouter } from 'next/router';
+import Navigation from '../components/navigation'
 export default function ambulances({data}) {
   const router = useRouter();
+
+
+  const ok={
+    sub:(item)=>{
+      const data ={
+        patientId:localStorage.getItem('id')
+      }
+      console.log(data);
+      axios.put(`http://localhost:3000/ambulance/edit/${item}`,data)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+      window.location.reload(false);
+      
+    }
+
+   
+
+  }
+ 
 
 
  
 
 
+
+
+
   return (
-    <div>
+    <div class="p-4 sm:ml-64">
+      <Navigation/>
+
       <h1>All Ambulances</h1>
       <table>
             <thead>
@@ -23,18 +52,18 @@ export default function ambulances({data}) {
               </tr>
             </thead>
             <tbody>
-              {data.map((item) => {
+              {data==null? data.map((item) => {
                 return (
                   <tr>
                     <td>{item.driverName}</td>
                     <td>{item.rent}</td>
                     <td>{item.location}</td>
-                    <td><button>Details</button></td>
-                    <td><button>Book</button></td>
+                   
+                    <td><button onClick={()=>{ok.sub(item.id)}} >Book</button></td>
                     
                   </tr>
                 );
-              })}
+              }):<p>No available ambulances</p>}
             </tbody>
           </table>
         
@@ -67,8 +96,9 @@ export async function getServerSideProps() {
 }
 }
 
-
-   
+function test(){
+  
+}
   
   
 
