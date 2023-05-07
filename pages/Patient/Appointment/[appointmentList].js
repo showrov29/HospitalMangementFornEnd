@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import NavBar from '@/pages/components/navBar';
 export default function appointmentlist({data}) {
   const [id,setId]=useState(0)
   const [details,setDetails]=useState(null)
@@ -40,36 +41,42 @@ export default function appointmentlist({data}) {
   return (
 
 
-    <div class="p-4 sm:ml-64">
+    <div class="">
       <Navigation/>
+      <NavBar/>
       
-      <h1>Appointment list</h1>
+      <div class="w-3/4 mx-auto p-4 sm:ml-64">
+        <div class="bg-gray-50 shadow-md rounded my-6"> 
 
-      <table>
+      <table class="text-left w-full border-collapse">
             <thead>
               <tr>
-                <th>Patient Name</th>
-                <th>Age </th>
-                <th>Date </th>
-                <th>Action </th>
+                <th  class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Patient Name</th>
+                <th  class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Age </th>
+                <th  class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Date </th>
+                <th  class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Action </th>
                 
               </tr>
             </thead>
             <tbody>
               {data && data.map((item) => {
                 return (
-                  <tr>
-                    <td>{item.name}</td>
-                    <td>{item.age}</td>
-                    <td>{item.date}</td>
+                  <tr class="hover:bg-gray-200">
+                    <td class="py-4 px-6 border-b border-grey-light">{item.name}</td>
+                    <td class="py-4 px-6 border-b border-grey-light">{item.age}</td>
+                    <td class="py-4 px-6 border-b border-grey-light">{item.date}</td>
                     
-                    <td><button onClick={()=>{ok.cancel(item.id)}} >Cancel</button></td>
+                    <td><button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-4 border border-blue-700 rounded" onClick={()=>{ok.cancel(item.id)}} >Delete</button></td>
                     
                   </tr>
                 );
               })}
             </tbody>
           </table>
+
+
+          </div>  
+      </div>     
         
     </div>
   )

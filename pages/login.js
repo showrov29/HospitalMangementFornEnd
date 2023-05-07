@@ -3,6 +3,8 @@ import { useFormik } from 'formik'
 import * as yup from 'yup'
 import axios from 'axios'
 import { useRouter } from 'next/router'
+import Footer from './components/footer'
+import Sessioncheck from './components/sessioncheck'
 
 export default function Login() {
   const [alertMessage,setAlertMessage] =useState(null)
@@ -36,10 +38,13 @@ export default function Login() {
 
        
         localStorage.setItem('id',response.data.id)
+        localStorage.setItem('profilePic',response.data.profilePic)
+        localStorage.setItem('email',response.data.email)
+        localStorage.setItem('password',values.password)
         console.log(localStorage.getItem('id'));
 
         // 
-        router.push('/')
+        router.push('/Patient/Doctor/doctors')
         
       })
       .catch((error) => {
@@ -49,7 +54,6 @@ export default function Login() {
 
       });
       
-      alert(localStorage.getItem('id'))
      
       
       resetForm(values);
@@ -62,13 +66,13 @@ export default function Login() {
    
    <>
  
-    
+    <Sessioncheck/>
 
 
 <section class="bg-gray-50 dark:bg-gray-900">
 
   <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-      <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+      <a href="/" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
           <img class="w-8 h-8 mr-2" src='MedicalLogo.png' alt="logo"/>
           HealthEase    
       </a>
@@ -95,7 +99,8 @@ export default function Login() {
                         onChange={formik.handleChange}
                         value={formik.values.email}
                         id="email"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" />
+                        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                         placeholder="name@company.com" />
                         {formik.touched.email && formik.errors.email && (<span className='text-sm text-red-600'> { formik.errors.email}</span> ) } 
                   </div>
                   <div>
@@ -133,7 +138,7 @@ export default function Login() {
 
 
 
-
+<Footer/>
 
 
 

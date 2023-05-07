@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import Link from 'next/link';
 import Profilepicup from '@/pages/components/profilepicup';
+import NavBar from '@/pages/components/navBar';
 
 export default function Profile({data}) {
   
@@ -11,6 +12,7 @@ export default function Profile({data}) {
   return (
     <div>
       <Navigation/>
+      <NavBar/>
       {/* <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="p-4 rounded-lg shadow-lg bg-white">
         <div className="flex items-center">
@@ -37,7 +39,7 @@ export default function Profile({data}) {
 
 
 
-<div class="flex items-center h-screen w-full justify-center">
+<div class="flex items-center  w-full justify-center">
 
 <div class="max-w-xs">
     <div class="bg-white shadow-xl rounded-lg py-3">
@@ -68,6 +70,9 @@ export default function Profile({data}) {
 
             <div class="text-center my-3">
                 <a class="text-xs text-indigo-500 italic hover:underline hover:text-indigo-600 font-medium" href="../editprofile">Edit Profile</a>
+            </div>
+            <div class="text-center my-3">
+                <a class="text-xs text-indigo-500 italic hover:underline hover:text-black font-medium" href="/components/changepass"> Change Password</a>
             </div>
 
         </div>

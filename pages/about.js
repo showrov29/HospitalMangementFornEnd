@@ -1,13 +1,18 @@
 import Link from "next/link";
 import MyLayout from "./components/layout";
+import Navbar2 from "./components/navbar2";
 
 export default function About(){
 	return (
 		<>
-		 <MyLayout/>
-		<h1>About page</h1>
-		<Link href="/"> Home</Link>
-		<h6 className="text-3xl font-bold underline">Atif</h6>
+		
+	<Navbar2/>
+
+
+
+		
+		
+		
 		
 		</>
 	

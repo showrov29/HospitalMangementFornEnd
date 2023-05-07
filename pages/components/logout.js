@@ -11,6 +11,7 @@ const router=useRouter();
     .then((response) => {
       console.log(response);
       localStorage.clear();
+      sessionStorage.clear();
       router.push('/login');
     }).catch((err) => {
       console.log(err);

@@ -3,9 +3,9 @@ import React from 'react'
 
 export default function DownloadReport(props) {
 
-    console.log(props.name);
+    console.log(props.report);
 
-    axios.get(`http://localhost:3000/report/getreport/${props.name}`)
+    axios.get(`http://localhost:3000/report/getreport/${props.report}`)
     .then(res=>{
         console.log(res);
     })

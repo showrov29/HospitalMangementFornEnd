@@ -4,6 +4,8 @@ import React from 'react'
 import MyHead from './head'
 import Sessioncheck from './sessioncheck'
 import Navigation from './navigation'
+import LandingPage from './landing'
+import Footer from './footer'
 
 export default function MyLayout({children}) {
   
@@ -11,14 +13,14 @@ export default function MyLayout({children}) {
     <div>
         
 
-        <Sessioncheck/>    
-          <MyHead/>
-          <Navigation/>
+        <LandingPage/>
+          
+          
        
        
 
         <main>{children}</main>
-
+<Footer/>
        
     </div>
   )

@@ -4,6 +4,8 @@ import { useState } from 'react';
 import axios from 'axios';
 import Navigation from '../../components/navigation'
 import { useRouter } from 'next/router';
+import NavBar from '@/pages/components/navBar';
+import Sessioncheck from '@/pages/components/sessioncheck';
 
 export default function prescription({data}) {
   const router=useRouter()
@@ -12,7 +14,7 @@ export default function prescription({data}) {
     details:(item)=>{
       
       router.push({
-        pathname: 'presdetails',
+        pathname: '/Patient/presdetails',
         query: { id: item }
       });
       
@@ -21,31 +23,45 @@ export default function prescription({data}) {
 
 
   return (
-    <div class="p-4 sm:ml-64">
+    <div class="">
 
+<Sessioncheck/>
 <Navigation/>
+<NavBar/>
 
-      
-          <table>
+
+      <div class="w-3/4 mx-auto p-4 sm:ml-64">
+        <div class="bg-gray-50 shadow-md rounded my-6">     
+          <table class="text-left w-full border-collapse">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>age</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Name</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Age</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Doctor Name</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Action</th>
                 
               </tr>
             </thead>
             <tbody>
               {data.map((item) => {
                 return (
-                  <tr>
-                    <td>{item.patientName}</td>
+                  <tr class="hover:bg-gray-200">
+                    <td class="py-4 px-6 border-b border-grey-light">{item.patientName}</td>
                     <td>{item.patientAge}</td>
-                    <td><button onClick={()=>{ok.details(item.id)}} >Details</button></td>
+                    <td>{item.doctorName}</td>
+                    <td><button class="bg-blue-500 hover:bg-green-700 text-white font-bold py-1 px-4 border border-blue-700 rounded" onClick={()=>{ok.details(item.id)}} >Details</button></td>
                   </tr>
                 );
               })}
             </tbody>
           </table>
+
+      </div>  
+      </div>     
+
+
+
+
         
     </div>
   )
